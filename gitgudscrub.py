@@ -29,7 +29,7 @@ def process_comment(comment):
             comment.refresh()
             replies = comment.replies
             for child in replies:
-                print(child.author)
+                #print(child.author)
                 if config.USERNAME == child.author:
                     already_reply = True
                     break
