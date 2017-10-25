@@ -2,12 +2,12 @@ import praw
 from time import sleep, time
 
 import config
-gitgud = praw.Reddit(client_id=config.client_id,
-                     client_secret=config.client_secret,
-                     password=config.password,
-                     user_agent='git gub by /u/bhjeff',
-                     username=config.username)
-message = "    git: 'gud' is not a git command. See 'git --help'.\n\n    The most similar command is\n            gui\n*****\n^^I ^^am ^^a ^^bot. ^^Visit ^^/r/gitgudscrubbot ^^for ^^more ^^information."
+gitgud = praw.Reddit(client_id=config.CLIENT_ID,
+                     client_secret=config.CLIENT_SECRET,
+                     password=config.PASSWORD,
+                     user_agent='git gud by /u/bhjeff',
+                     username=config.USERNAME)
+MESSAGE = "    git: 'gud' is not a git command. See 'git --help'.\n\n    The most similar command is\n            gui\n*****\n^^I ^^am ^^a ^^bot. ^^Visit ^^/r/gitgudscrubbot ^^for ^^more ^^information."
 
 sub = gitgud.subreddit('gitgudscrubbot')
 
@@ -23,13 +23,13 @@ for comment in comments:
         replies = comment.replies
         for child in replies:
             print(child.author)
-            if config.username == child.author:
+            if config.USERNAME == child.author:
                 already_reply = True
                 break
         if already_reply:
             continue
         try:
-            comment.reply(message)
+            comment.reply(MESSAGE)
             print("we did it!")
         except:
             print("ruh roh raggie")
