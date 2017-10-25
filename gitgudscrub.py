@@ -4,6 +4,7 @@ import praw
 import config
 
 MESSAGE = "    git: 'gud' is not a git command. See 'git --help'.\n\n    The most similar command is\n            gui\n*****\n^^I ^^am ^^a ^^bot. ^^Visit ^^/r/gitgudscrubbot ^^for ^^more ^^information."
+SUBREDDIT = 'gitgudscrubbot'
 
 def main():
     gitgud = praw.Reddit(client_id=config.CLIENT_ID,
@@ -12,7 +13,7 @@ def main():
                          user_agent='git gud by /u/bhjeff',
                          username=config.USERNAME)
     print(gitgud.user.me())
-    sub = gitgud.subreddit('gitgudscrubbot')
+    sub = gitgud.subreddit(SUBREDDIT)
     comments = sub.stream.comments()
     for comment in comments:
          if process_comment(comment):
@@ -40,6 +41,6 @@ def process_comment(comment):
             except:
                 print("ruh roh raggie")
             return True
-        
+
 if __name__ == '__main__':
     main()
