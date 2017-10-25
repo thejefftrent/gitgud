@@ -16,5 +16,13 @@ print(gitgud.user.me())
 for comment in comments:
     text = comment.body
     if 'git gud' in text.lower():
-        comment.reply(message)
-        print("we did it!")
+        already_reply = False
+        for child in comment.replies:
+            if config.username == child.author:
+                already_reply = True
+        if not already_reply:
+            try:
+                comment.reply(message)
+                print("we did it!")
+            except:
+                print("ruh roh raggie")
