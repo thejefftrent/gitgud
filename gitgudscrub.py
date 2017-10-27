@@ -25,7 +25,7 @@ def main():
 def process_comment(comment):
         text = comment.body
         already_reply = False
-        if 'git gud' in text.lower():
+        if 'git gud' == text.lower():
             comment.refresh()
             replies = comment.replies
             for child in replies:
